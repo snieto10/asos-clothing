@@ -4,6 +4,8 @@ import {
 } from '../../utils/firebase/firebase.utils.js';
 
 import SignUp from '../../components/signup/signupform.component.jsx';
+import './sign-in.styles.scss';
+import SignInIn from '../../components/sign-in/sign-in.component.jsx';
 
 function SignIn() {
   const logGoogleUser = async () => {
@@ -12,9 +14,8 @@ function SignIn() {
   };
 
   return (
-    <div>
-      <h1>Sign In Page</h1>
-      <button onClick={logGoogleUser}>Sign in with Google Popup</button>
+    <div className='signIn-flex'>
+      <SignInIn />
       <SignUp />
     </div>
   );
