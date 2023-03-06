@@ -35,6 +35,7 @@ function SignInIn() {
 
     try {
       signInEmailPassword(email, password);
+
       resetForm();
     } catch (error) {
       console.log(error);
