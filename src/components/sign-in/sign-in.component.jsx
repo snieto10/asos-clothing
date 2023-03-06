@@ -2,7 +2,11 @@ import { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 import './sign-in-form.styles.scss';
-import { signInEmailPassword } from '../../utils/firebase/firebase.utils';
+import {
+  signInEmailPassword,
+  signInWithGooglePopup,
+  createUserDocumentFromAuth,
+} from '../../utils/firebase/firebase.utils';
 
 const defaultFormFields = {
   email: '',
@@ -14,11 +18,24 @@ function SignInIn() {
 
   const { email, password } = formFields;
 
+  const resetForm = () => {
+    setFormsFields({
+      email: '',
+      password: '',
+    });
+  };
+
+  const signInWithGoogle = async () => {
+    const { user } = await signInWithGooglePopup();
+    await createUserDocumentFromAuth(user);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       signInEmailPassword(email, password);
+      resetForm();
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +76,11 @@ function SignInIn() {
 
           <div className='signin-inline'>
             <Button type='submit'>SIGN IN</Button>
-            <Button type='submit' buttonType='google'>
+            <Button
+              type='submit'
+              buttonType='google'
+              onClick={signInWithGoogle}
+            >
               SIGN IN WITH GOOGLE
             </Button>
           </div>

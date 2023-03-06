@@ -72,7 +72,15 @@ export const signInEmailPassword = (email, password) => {
       console.log(user);
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      switch (error.code) {
+        case 'auth/wrong-password':
+          alert('incorrect password for email');
+          break;
+        case 'auth/user-not-found':
+          alert('incorrect email');
+          break;
+        default:
+          console.log(error);
+      }
     });
 };
