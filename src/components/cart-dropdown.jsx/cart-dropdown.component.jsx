@@ -2,12 +2,9 @@ import './cart-dropdown.styles.scss';
 import Button from './../button/button.component';
 import { useState } from 'react';
 
-function CartDropDown({ open }) {
+function CartDropDown() {
   return (
-    <div
-      className='cart-dropdown-container'
-      style={{ display: open ? 'flex' : 'none' }}
-    >
+    <div className='cart-dropdown-container'>
       CartDropDown
       <div className='cart-items'>
         <Button>GO TO CHECKOUT</Button>
