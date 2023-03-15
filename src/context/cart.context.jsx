@@ -41,12 +41,19 @@ export const CartProvider = ({ children }) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
 
+  const deleteItem = (productToDelete) => {
+    let copyArray = [...cartItems];
+    let newArray = copyArray.filter((item) => item.id !== productToDelete.id);
+    setCartItems(newArray);
+  };
+
   const value = {
     isCartOpen,
     setIsCartOpen,
     addItemToCart,
     cartItems,
     cartCount,
+    deleteItem,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
