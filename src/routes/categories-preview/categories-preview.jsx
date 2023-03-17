@@ -6,18 +6,15 @@ import CategoryPreview from '../../components/category-preview.component.jsx/cat
 function CategoriesPreview() {
   const { categoriesMap } = useContext(CategoriesContext);
 
-  console.log(categoriesMap);
-
   return (
-    <>
+    <div className='category-preview-container'>
       {Object.keys(categoriesMap).map((title) => {
         const products = categoriesMap[title];
-
         return (
           <CategoryPreview key={title} title={title} products={products} />
         );
       })}
-    </>
+    </div>
   );
 }
 
