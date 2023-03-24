@@ -9,7 +9,6 @@ function Checkout() {
 
   return (
     <>
-      <h1>I am the checkout page</h1>
       <div className='checkout-container'>
         <div className='checkout-header'>
           <div className='header-block'>
